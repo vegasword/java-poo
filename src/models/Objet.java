@@ -1,6 +1,6 @@
 package models;
 
-public class Objet {
+public abstract class Objet {
     private String nom;
     private int prixAchat;
     private int prixVente;
@@ -36,6 +36,12 @@ public class Objet {
     public void setPrixVente(int prixVente) {
         this.prixVente = prixVente;
     }
+
+    public void interraction()
+    {
+        System.out.print("un objet interragit avec le joueur");
+    }
 }
+
 
 

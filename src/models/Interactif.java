@@ -1,2 +1,6 @@
-package models;public class Interface {
+package models;
+
+public interface Interactif
+{
+    public void interraction();
 }
