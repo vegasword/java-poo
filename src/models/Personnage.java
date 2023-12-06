@@ -11,7 +11,7 @@ public abstract class Personnage implements Interactif {
 
     ArrayList<Objet> inventaire  = new ArrayList();
 
-    public Personnage(int pv, String nom, int force) {
+    public Personnage(int pv, String nom, int force, boolean formation) {
 
         this.force = force;
         this.pv = pv;
@@ -31,6 +31,8 @@ public abstract class Personnage implements Interactif {
         return this.nom;
     }
 
+    public boolean getFormation(){return this.formation;}
+
     public void setPv(int pv) {
         this.pv = pv;
     }
@@ -42,6 +44,8 @@ public abstract class Personnage implements Interactif {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public void setFormation(boolean formation){this.formation = formation;}
 
     public abstract void  attaque (Personnage cible);
     public abstract void  defense ();

@@ -27,4 +27,10 @@ public class Arme extends Objet{
     public void setDurabilite(int durabilite) {
         this.durabilite = durabilite;
     }
+
+
+    public void interraction()
+    {
+        System.out.print("un personnage interragit avec le joueur");
+    }
 }
