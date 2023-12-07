@@ -6,17 +6,15 @@ public abstract class Personnage implements Interactif {
     private int pv;
     private String nom;
     private int force;
-
-    private boolean formation;
+    private boolean defensif;
 
     public ArrayList<Objet> inventaire  = new ArrayList();
 
-    public Personnage(int pv, String nom, int force, boolean formation) {
-
+    public Personnage(int pv, String nom, int force) {
         this.force = force;
         this.pv = pv;
         this.nom = nom;
-        this.formation = false;
+        this.defensif = false;
     }
 
     public int getPv() {
@@ -31,7 +29,7 @@ public abstract class Personnage implements Interactif {
         return this.nom;
     }
 
-    public boolean getFormation(){return this.formation;}
+    public boolean getDefensif(){return this.defensif;}
 
     public void setPv(int pv) {
         this.pv = pv;
@@ -45,10 +43,10 @@ public abstract class Personnage implements Interactif {
         this.nom = nom;
     }
 
-    public void setFormation(boolean formation){this.formation = formation;}
+    public void setDefensif(boolean defensif){this.defensif = defensif;}
 
-    public abstract void  attaque (Personnage cible, Arme armeUtilisee);
-    public abstract void  defense ();
+    public abstract void attaque(Personnage cible, Arme armeUtilisee);
+    public abstract void defense();
 
     public void interraction()
     {

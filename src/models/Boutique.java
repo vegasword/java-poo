@@ -1,26 +1,31 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Boutique {
-    private final List<Objet> objetsDisponibles;
+    private ArrayList<Objet> objetDisponible;
 
     public Boutique() {
-        objetsDisponibles = new ArrayList<>();
-        initialiserBoutique();
-        System.out.println("Boutique Crée !");
+        this.objetDisponible = new ArrayList<Objet>();
 
+        Random random = new Random();
+        int itemRandomId = random.nextInt(0, 2);
+        switch (itemRandomId) {
+            case 0:
+                this.objetDisponible.add(new Arme("Tmp", 1, 2, 3, 4));
+                break;
+
+            case 1:
+                this.objetDisponible.add(new Armure("Oe de ouf", 1, 2, 3, 4));
+                break;
+
+            case 2:
+                this.objetDisponible.add(new Potion("Tkt", 1, 2, 3));
+        }
     }
 
-    private void initialiserBoutique() {
-        Arme sword1 = new Arme("Épée en bois", 5, 2, 5, 10);
-        Arme lance = new Arme("Lance en bois", 5, 2, 10, 5);
-        objetsDisponibles.add(sword1);
-        objetsDisponibles.add(lance);
-    }
-    public List<Objet> getObjetsDisponibles() {
-        return objetsDisponibles;
+    public ArrayList<Objet> getObjetDisponible() {
+        return objetDisponible;
     }
 
     public void acheterObjet(Joueur joueur, Objet objet) {
@@ -28,9 +33,9 @@ public class Boutique {
 
         if (joueur.getOr() >= prixAchat) {
             joueur.setOr(joueur.getOr() - prixAchat);
-            System.out.println("Achat réussi : " + objet.getnom() + " pour " + prixAchat + " ecus.");
+            System.out.println("Achat réussi : " + objet.getNom() + " pour " + prixAchat + " ecus.");
         } else {
-            System.out.println("Pas assez d'ecus. Impossible d'acheter " + objet.getnom() + ".");
+            System.out.println("Pas assez d'ecus. Impossible d'acheter " + objet.getNom() + ".");
         }
     }
 
@@ -38,7 +43,7 @@ public class Boutique {
         int prixVente = objet.getPrixVente();
 
         joueur.setOr(joueur.getOr() + prixVente);
-        System.out.println("Vente réussie : " + objet.getnom() + " pour " + prixVente + " ecus.");
+        System.out.println("Vente réussie : " + objet.getNom() + " pour " + prixVente + " ecus.");
     }
 
 

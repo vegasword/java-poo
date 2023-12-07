@@ -3,11 +3,11 @@ package models;
 public class Joueur extends Personnage {
     private int or;
 
-    public Joueur (String nom,int pv,int force,int or, boolean formation){
-        super(pv, nom, force,formation);
+    public Joueur (String nom, int pv, int force, int or){
+        super(pv, nom, force);
         this.or = or;
-
     }
+
     public int getOr() {
         return or;
     }
@@ -25,21 +25,16 @@ public class Joueur extends Personnage {
     public void attaque (Personnage cible, Arme armeUtilisee)
     {
         int degat = this.getForce()+armeUtilisee.getDegat();
-
-        if (!cible.getFormation())
+        if (!cible.getDefensif())
         {
-            degat = degat/4;
+            degat /= 4;
         }
-
         cible.setPv(cible.getPv() - degat);
-
-        System.out.println("le joueur attaque");
     }
     
   @Override
     public void defense()
     {
-        this.setFormation(false);
-        System.out.println("le joueur se defend");
+        this.setDefensif(true);
     }
 }

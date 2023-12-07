@@ -1,6 +1,6 @@
 package models;
 
-public abstract class Objet {
+public abstract class Objet implements Interactif {
     private String nom;
     private int prixAchat;
     private int prixVente;
