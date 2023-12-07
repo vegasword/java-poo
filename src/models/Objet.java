@@ -13,7 +13,7 @@ public abstract class Objet {
 
     }
 
-    public String getnom() {
+    public String getNom() {
         return this.nom;
     }
 
