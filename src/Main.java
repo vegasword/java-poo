@@ -21,6 +21,9 @@ public class Main {
         {
             case 1:
                 sortie.afficherAttaque(joueur,ennemis.get(1),24);
+            case 2:
+                joueur.defense();
+
         }
 
 

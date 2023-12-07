@@ -30,6 +30,13 @@ public class SortieInterfaceUtilisateur {
    }
 
    // ToDo : afficher boutique
-   //todo : afficher interface entre 2 combat
+   public void afficherEntracte(Joueur joueur)
+   {
+      System.out.println("-----------------------\n" +
+              "Vous avez fini une bataille, que vous voulez vous faire :\n" +
+              "1_modifier équipement" +
+              "2_aller a la boutique" +
+              "3_retourner au combat");
+   }
 
 }
