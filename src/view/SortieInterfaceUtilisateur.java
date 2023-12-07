@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import models.*;
 
 public class SortieInterfaceUtilisateur {
-   public void menuPrincipal()  {
+   public static void menuPrincipal()  {
       System.out.println("-~-~- FAIR FIGHT -~-~-\n1. Play\n2. Quit");
    }
 
-   public void afficherJeu(Joueur joueur, ArrayList<Ennemi> ennemis) {
+   public static void  afficherJeu(Joueur joueur, ArrayList<Ennemi> ennemis) {
       System.out.println(joueur.getNom() + " : " + joueur.getPv() + " PV, " + joueur.getForce() + " FORCE, " + joueur.getOr() + " OR");
       for (Ennemi ennemi : ennemis) {
          System.out.println(ennemi.getNom() + " : " + ennemi.getPv() + " PV, " + ennemi.getForce() + " FORCE");
@@ -17,7 +17,7 @@ public class SortieInterfaceUtilisateur {
       System.out.println("-----------------------\n1. Attaque\n2. Défendre\n3. Utiliser objet");
    }
 
-   public void interactionPersonnageObject(Personnage personnage, Objet objet, boolean utilisation) {
+   public static void interactionPersonnageObject(Personnage personnage, Objet objet, boolean utilisation) {
      if (utilisation) {
         System.out.println(personnage.getNom() + " utilise " + objet.getNom());
      } else {
@@ -25,12 +25,12 @@ public class SortieInterfaceUtilisateur {
      }
    }
 
-   public void afficherAttaque(Personnage a, Personnage b, int degat) {
+   public static void afficherAttaque(Personnage a, Personnage b, int degat) {
       System.out.println(a.getNom() + " attaque " + b.getNom() + " en lui infligeant " + degat + " dégâts !");
    }
 
    // ToDo : afficher boutique
-   public void afficherEntracte(Joueur joueur)
+   public static void afficherEntracte(Joueur joueur)
    {
       System.out.println("-----------------------\n" +
               "Vous avez fini une bataille, que vous voulez vous faire :\n" +

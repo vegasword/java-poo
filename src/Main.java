@@ -8,7 +8,7 @@ public static void main(String[] args) {
         sortie.menuPrincipal();
         EntreeInterfaceUtilisateur entree = new EntreeInterfaceUtilisateur();
 
-        Joueur joueur = new Joueur("Jean Eudes", 40, 10, 50, false);
+        Joueur joueur = new Joueur("Jean Eudes", 40, 10, 50);
         ArrayList<Ennemi> ennemis = new ArrayList<>();
         ennemis.add(new Zombie());
         ennemis.add(new Squelette());

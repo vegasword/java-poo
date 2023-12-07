@@ -26,10 +26,27 @@ public class Jeu {
 
     public void boucleDeJeu() {
         //TODO: Phase d'accueil
+        SortieInterfaceUtilisateur.menuPrincipal();
+        if(EntreeInterfaceUtilisateur.entreeMenuPrincipal() == 1){
+            while(this.joueur.getPv() > 0) {
+                //TODO: Phase Combat + Boutique
+                do{
+                    SortieInterfaceUtilisateur.afficherJeu(this.joueur,this.ennemis);
+                    int choix = EntreeInterfaceUtilisateur.choixCombat();
+                    if (choix == 1)
+                    {
+                        int degat = this.joueur.attaque(this.ennemis.get(0), this.joueur.getArme());
+                        SortieInterfaceUtilisateur.afficherAttaque(this.joueur,this.ennemis.get(0),degat);
+                    }
 
-       while(this.joueur.getPv() > 0) {
-          //TODO: Phase Combat + Boutique
-       }
+
+                }
+                while(!ennemis.isEmpty());
+
+            }
+        }
+
+
 
        //TODO: Fin du jeu
     }

@@ -8,7 +8,9 @@ public abstract class Personnage implements Interactif {
     private int force;
     private boolean defensif;
 
-    public ArrayList<Objet> inventaire  = new ArrayList();
+    private Arme arme;
+
+    private ArrayList<Objet> inventaire  = new ArrayList();
 
     public Personnage(int pv, String nom, int force) {
         this.force = force;
@@ -45,7 +47,23 @@ public abstract class Personnage implements Interactif {
 
     public void setDefensif(boolean defensif){this.defensif = defensif;}
 
-    public abstract void attaque(Personnage cible, Arme armeUtilisee);
+    public ArrayList<Objet> getInventaire() {
+        return this.inventaire;
+    }
+
+    public void ajouterObjet(Objet objet) {
+        this.inventaire.add(objet);
+    }
+
+    public Arme getArme() {
+        return arme;
+    }
+
+    public void setArme(Arme arme) {
+        this.arme = arme;
+    }
+
+    public abstract int attaque(Personnage cible, Arme armeUtilisee);
     public abstract void defense();
 
     public void interraction()

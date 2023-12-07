@@ -7,12 +7,13 @@ public class  Ennemi extends Personnage {
     }
 
     @Override
-    public void attaque (Personnage cible, Arme armeUtilisee)
+    public int attaque (Personnage cible, Arme armeUtilisee)
     {
-        cible.setPv(cible.getPv() - (this.getForce())+armeUtilisee.getDegat());
-
-        System.out.println("le joueur attaque");
+        int degat = this.getForce() + armeUtilisee.getDegat();
+        cible.setPv(cible.getPv() - degat);
+        return degat;
     }
+
     @Override
     public void defense()
     {

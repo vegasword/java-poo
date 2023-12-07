@@ -4,9 +4,9 @@ import models.Joueur;
 import java.util.*;
 
 public class EntreeInterfaceUtilisateur {
-    private Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
-    private int faireUnChoix(int min, int max) {
+    private static int faireUnChoix(int min, int max) {
         int choix;
         do {
             choix = scanner.nextInt();
@@ -17,12 +17,12 @@ public class EntreeInterfaceUtilisateur {
         return choix;
     }
 
-    public int entreeMenuPrincipal()
+    public static int entreeMenuPrincipal()
     {
         return faireUnChoix(1, 2);
     }
 
-    public int entreeAfficherJeu()
+    public static int choixCombat()
     {
         return faireUnChoix(0, 4);
     }

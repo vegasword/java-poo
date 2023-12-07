@@ -3,6 +3,7 @@ package models;
 public class Joueur extends Personnage {
     private int or;
 
+
     public Joueur (String nom, int pv, int force, int or){
         super(pv, nom, force);
         this.or = or;
@@ -22,7 +23,7 @@ public class Joueur extends Personnage {
     }
 
     @Override
-    public void attaque (Personnage cible, Arme armeUtilisee)
+    public int attaque(Personnage cible, Arme armeUtilisee)
     {
         int degat = this.getForce()+armeUtilisee.getDegat();
         if (!cible.getDefensif())
@@ -30,6 +31,7 @@ public class Joueur extends Personnage {
             degat /= 4;
         }
         cible.setPv(cible.getPv() - degat);
+        return degat;
     }
     
   @Override
