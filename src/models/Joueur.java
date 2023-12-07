@@ -2,9 +2,9 @@ package models;
 
 public class Joueur extends Personnage {
     private int or;
+    private int victimes;
 
-
-    public Joueur (String nom, int pv, int force, int or){
+    public Joueur(String nom, int pv, int force, int or) {
         super(pv, nom, force);
         this.or = or;
     }
@@ -17,26 +17,34 @@ public class Joueur extends Personnage {
         this.or = or;
     }
 
-    public void utiliser()
-    {
-        System.out.print("un personnage interragit avec le joueur");
+    public int getScore() {
+        return this.victimes * this.or;
     }
 
     @Override
-    public int attaque(Personnage cible, Arme armeUtilisee)
-    {
-        int degat = this.getForce()+armeUtilisee.getDegat();
-        if (!cible.getDefensif())
-        {
-            degat /= 4;
+    public int attaque(Personnage cible) {
+        int degat = this.getForce();
+        if (this.getArme() != null) {
+            degat += this.getArme().getDegat();
         }
+        if (cible.getSeDefend()) degat /= 4;
         cible.setPv(cible.getPv() - degat);
+        int cibleNewPv = cible.getPv();
+        if (cibleNewPv < 0) {
+            this.or += Math.abs(cibleNewPv);
+            victimes++;
+        }
         return degat;
     }
-    
-  @Override
-    public void defense()
-    {
-        this.setDefensif(true);
+
+    @Override
+    public void defense() {
+        this.setSeDefend(true);
+    }
+
+    public void interagitAvecUnPersonnage(Personnage p) {
+        if (p instanceof Ennemi) {
+            System.out.println(this.getNom() + " lâche son meilleur regard noir sur " + p.getNom());
+        }
     }
 }

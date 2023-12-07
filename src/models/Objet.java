@@ -37,10 +37,8 @@ public abstract class Objet implements Interactif {
         this.prixVente = prixVente;
     }
 
-    public void utiliser()
-    {
-        System.out.print("un objet interragit avec le joueur");
-    }
+    public void interagitAvecUnPersonnage(Personnage personnage) { }
+    public void interagitAvecUnObjet(Objet objet) { }
 }
 
 

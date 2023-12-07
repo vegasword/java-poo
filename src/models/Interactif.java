@@ -2,5 +2,5 @@ package models;
 
 public interface Interactif
 {
-    public void utiliser();
+    public void interagitAvecUnPersonnage(Personnage personnage);
 }

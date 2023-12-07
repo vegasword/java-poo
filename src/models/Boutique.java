@@ -3,39 +3,37 @@ package models;
 import java.util.*;
 
 public class Boutique {
-    private ArrayList<Objet> objetDisponible;
+    private Objet objetDisponible;
 
-    public Boutique(Joueur j) {
-        this.objetDisponible = new ArrayList<Objet>();
-
+    public Boutique() {
         Random random = new Random();
         int itemRandomId = random.nextInt(0, 2);
         switch (itemRandomId) {
             case 0:
-                j.setArme(new Arme("Tmp", 1, 2, 3, 4));
+                this.objetDisponible = new Arme("Tmp", 1, 2, 3, 4);
                 break;
 
             case 1:
-                this.objetDisponible.add(new Armure("Oe de ouf", 1, 2, 3, 4));
+                this.objetDisponible = new Armure("Oe de ouf", 1, 2, 3, 4);
                 break;
 
             case 2:
-                this.objetDisponible.add(new Potion("Tkt", 1, 2, 3));
+                this.objetDisponible = new PotionSoin(3);
+                break;
         }
     }
 
-    public ArrayList<Objet> getObjetDisponible() {
+    public Objet getObjetDisponible() {
         return objetDisponible;
     }
 
-    public void acheterObjet(Joueur joueur, Objet objet) {
-        int prixAchat = objet.getPrixAchat();
-
+    public void acheterObjet(Joueur joueur) {
+        int prixAchat = objetDisponible.getPrixAchat();
         if (joueur.getOr() >= prixAchat) {
             joueur.setOr(joueur.getOr() - prixAchat);
-            System.out.println("Achat réussi : " + objet.getNom() + " pour " + prixAchat + " ecus.");
+            this.objetDisponible.interagitAvecUnPersonnage(joueur);
         } else {
-            System.out.println("Pas assez d'ecus. Impossible d'acheter " + objet.getNom() + ".");
+            System.out.println("Pas assez d'or ! Impossible d'acheter " + objetDisponible.getNom() + ".");
         }
     }
 

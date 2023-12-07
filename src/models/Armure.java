@@ -1,6 +1,6 @@
 package models;
 
-public class Armure extends Objet{
+public class Armure extends Objet {
     private int defense;
     private int durabilite;
 
@@ -25,5 +25,13 @@ public class Armure extends Objet{
 
     public void setDurabilite(int durabilite) {
         this.durabilite = durabilite;
+    }
+
+    public void interagitAvecUnPersonnage(Personnage personnage) {
+        personnage.getInventaire().add(this);
+        System.out.print(personnage.getNom() + " s'équipe de l'armure suivante: " + this.getNom());
+    }
+
+    public void interagitAvecUnObjet(Objet objet) {
     }
 }
