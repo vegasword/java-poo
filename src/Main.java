@@ -3,8 +3,7 @@ import models.*;
 import view.*;
 import controllers.*;
 public class Main {
-    public static void main(String[] args) {
-
+public static void main(String[] args) {
         SortieInterfaceUtilisateur sortie = new SortieInterfaceUtilisateur();
         sortie.menuPrincipal();
         EntreeInterfaceUtilisateur entree = new EntreeInterfaceUtilisateur();

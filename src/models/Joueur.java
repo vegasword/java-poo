@@ -15,6 +15,7 @@ public class Joueur extends Personnage {
     public void setOr(int or) {
         this.or = or;
     }
+
     public void interraction()
     {
         System.out.print("un personnage interragit avec le joueur");
@@ -34,11 +35,11 @@ public class Joueur extends Personnage {
 
         System.out.println("le joueur attaque");
     }
-    @Override
+    
+  @Override
     public void defense()
     {
         this.setFormation(false);
         System.out.println("le joueur se defend");
     }
-
 }

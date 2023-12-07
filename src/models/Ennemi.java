@@ -22,5 +22,4 @@ public class  Ennemi extends Personnage {
     {
         System.out.print("un enemie interragit avec le joueur");
     }
-
 }
