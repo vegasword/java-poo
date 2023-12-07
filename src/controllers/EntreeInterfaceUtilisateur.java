@@ -1,5 +1,6 @@
 package controllers;
-import models.Joueur;
+
+import models.Personnage;
 
 import java.util.*;
 
@@ -17,14 +18,20 @@ public class EntreeInterfaceUtilisateur {
         return choix;
     }
 
-    public static int entreeMenuPrincipal()
+    public static int menuPrincipal()
     {
         return faireUnChoix(1, 2);
     }
 
-    public static int choixCombat()
+    public static int choixJeu()
     {
         return faireUnChoix(0, 4);
+    }
+
+    public static int choixObjets(Personnage p) {
+        int choix = faireUnChoix(0, p.getInventaire().size());
+        p.getInventaire().get(choix).utiliser();
+        return choix;
     }
 
     public int entreeAfficherEntracte(){return faireUnChoix(0, 4);}

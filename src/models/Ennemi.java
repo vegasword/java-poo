@@ -20,7 +20,7 @@ public class  Ennemi extends Personnage {
         this.setDefensif(true);
     }
 
-    public void interraction()
+    public void utiliser()
     {
         System.out.print("un enemie interragit avec le joueur");
     }

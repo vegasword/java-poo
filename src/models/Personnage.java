@@ -66,7 +66,7 @@ public abstract class Personnage implements Interactif {
     public abstract int attaque(Personnage cible, Arme armeUtilisee);
     public abstract void defense();
 
-    public void interraction()
+    public void utiliser()
     {
         System.out.print("un personnage interragit avec le joueur");
     }

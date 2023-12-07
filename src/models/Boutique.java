@@ -5,14 +5,14 @@ import java.util.*;
 public class Boutique {
     private ArrayList<Objet> objetDisponible;
 
-    public Boutique() {
+    public Boutique(Joueur j) {
         this.objetDisponible = new ArrayList<Objet>();
 
         Random random = new Random();
         int itemRandomId = random.nextInt(0, 2);
         switch (itemRandomId) {
             case 0:
-                this.objetDisponible.add(new Arme("Tmp", 1, 2, 3, 4));
+                j.setArme(new Arme("Tmp", 1, 2, 3, 4));
                 break;
 
             case 1:

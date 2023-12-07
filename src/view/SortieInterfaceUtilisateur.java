@@ -17,16 +17,27 @@ public class SortieInterfaceUtilisateur {
       System.out.println("-----------------------\n1. Attaque\n2. Défendre\n3. Utiliser objet");
    }
 
-   public static void interactionPersonnageObject(Personnage personnage, Objet objet, boolean utilisation) {
-     if (utilisation) {
-        System.out.println(personnage.getNom() + " utilise " + objet.getNom());
-     } else {
-        System.out.println(personnage.getNom() + " ramasse " + objet.getNom());
-     }
-   }
-
    public static void afficherAttaque(Personnage a, Personnage b, int degat) {
       System.out.println(a.getNom() + " attaque " + b.getNom() + " en lui infligeant " + degat + " dégâts !");
+   }
+
+   public static void afficherDefense(Personnage p) {
+      System.out.println( p.getNom() + " choisit de se défendre au prochani tour");
+   }
+
+   public static void afficherObjets(Personnage p) {
+      System.out.println("Objets de " + p.getNom() + ": ");
+      for(Objet objet : p.getInventaire()) {
+         System.out.println("-> " + objet.getNom());
+      }
+   }
+
+   public static void interactionPersonnageObject(Personnage personnage, Objet objet, boolean utilisation) {
+      if (utilisation) {
+         System.out.println(personnage.getNom() + " utilise " + objet.getNom());
+      } else {
+         System.out.println(personnage.getNom() + " ramasse " + objet.getNom());
+      }
    }
 
    // ToDo : afficher boutique

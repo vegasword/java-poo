@@ -17,7 +17,7 @@ public class Joueur extends Personnage {
         this.or = or;
     }
 
-    public void interraction()
+    public void utiliser()
     {
         System.out.print("un personnage interragit avec le joueur");
     }

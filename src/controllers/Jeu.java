@@ -21,34 +21,41 @@ public class Jeu {
         this.ennemis.add(new Squelette());
         this.ennemis.add(new Squelette());
 
-        this.boutique = new Boutique();
+        this.boutique = new Boutique(this.joueur);
     }
 
     public void boucleDeJeu() {
-        //TODO: Phase d'accueil
         SortieInterfaceUtilisateur.menuPrincipal();
-        if(EntreeInterfaceUtilisateur.entreeMenuPrincipal() == 1){
-            while(this.joueur.getPv() > 0) {
-                //TODO: Phase Combat + Boutique
-                do{
-                    SortieInterfaceUtilisateur.afficherJeu(this.joueur,this.ennemis);
-                    int choix = EntreeInterfaceUtilisateur.choixCombat();
-                    if (choix == 1)
-                    {
+        if(EntreeInterfaceUtilisateur.menuPrincipal() == 1){
+            while(this.joueur.getPv() > 0 || !ennemis.isEmpty()) {
+                // Choix des actions disponible
+                SortieInterfaceUtilisateur.afficherJeu(this.joueur, this.ennemis);
+                int choix = EntreeInterfaceUtilisateur.choixJeu();
+                switch (choix) {
+                    case 1: { // Attaquer
+                        //TODO: Choix attaquer quel ennemi
                         int degat = this.joueur.attaque(this.ennemis.get(0), this.joueur.getArme());
                         SortieInterfaceUtilisateur.afficherAttaque(this.joueur,this.ennemis.get(0),degat);
-                    }
+                    } break;
 
+                    case 2: { // Défense
+                        this.joueur.setDefensif(true);
+                        SortieInterfaceUtilisateur.afficherDefense(this.joueur);
+                    } break;
 
+                    case 3: { // Utiliser un objet
+                        SortieInterfaceUtilisateur.afficherObjets(this.joueur);
+                        int choixObjet = EntreeInterfaceUtilisateur.choixObjets(this.joueur);
+                        this.joueur.getInventaire().get(choixObjet).utiliser();
+                    } break;
                 }
-                while(!ennemis.isEmpty());
 
+                //TODO: Execution du combat (Joueur puis ennemis)
+                this.joueur.setDefensif(false);
             }
+            //TODO: Execution boutique
+
+            //TODO: Fin du jeu
         }
-
-
-
-       //TODO: Fin du jeu
     }
-
 }
