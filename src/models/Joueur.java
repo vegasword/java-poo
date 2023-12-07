@@ -21,9 +21,16 @@ public class Joueur extends Personnage {
     }
 
     @Override
-    public void attaque (Personnage cible)
+    public void attaque (Personnage cible, Arme armeUtilisee)
     {
-        cible.setPv(cible.getPv() - (this.getForce()));
+        int degat = this.getForce()+armeUtilisee.getDegat();
+
+        if (!cible.getFormation())
+        {
+            degat = degat/4;
+        }
+
+        cible.setPv(cible.getPv() - degat);
 
         System.out.println("le joueur attaque");
     }

@@ -9,7 +9,7 @@ public abstract class Personnage implements Interactif {
 
     private boolean formation;
 
-    ArrayList<Objet> inventaire  = new ArrayList();
+    public ArrayList<Objet> inventaire  = new ArrayList();
 
     public Personnage(int pv, String nom, int force, boolean formation) {
 
@@ -47,7 +47,7 @@ public abstract class Personnage implements Interactif {
 
     public void setFormation(boolean formation){this.formation = formation;}
 
-    public abstract void  attaque (Personnage cible);
+    public abstract void  attaque (Personnage cible, Arme armeUtilisee);
     public abstract void  defense ();
 
     public void interraction()
