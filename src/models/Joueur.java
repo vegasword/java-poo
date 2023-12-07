@@ -15,4 +15,14 @@ public class Joueur extends Personnage {
     public void setOr(int or) {
         this.or = or;
     }
+
+    @Override
+    public void attaque(Personnage cible) {
+
+    }
+
+    @Override
+    public void defense() {
+
+    }
 }
