@@ -1,4 +1,6 @@
 package controllers;
+import models.Joueur;
+
 import java.util.*;
 
 public class EntreeInterfaceUtilisateur {
@@ -24,6 +26,8 @@ public class EntreeInterfaceUtilisateur {
     {
         return faireUnChoix(0, 4);
     }
+
+    public int entreeAfficherEntracte(){return faireUnChoix(0, 4);}
 
     //TODO: Choix de l'ennemi à attaquer
 }
