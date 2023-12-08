@@ -6,6 +6,13 @@ import view.InterfaceUtilisateur;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * classe contenant les informations propre à la partie en cours
+ * l'objet Joueur contient les informations du joueur
+ * l'objet ennemie contient une liste de tous les enemis que le joueur combat
+ * l'objet boutique contient les informations de la boutique 
+ * maxEnemis correspond au nombre d'enemie que le joueur doit affronter
+ */
 
 public class Jeu {
     private Joueur joueur;
@@ -14,11 +21,20 @@ public class Jeu {
 
     private int maxEnnemis;
     private Random random;
-
+    
+    /**
+    * constructructeur permetant d'initialiser la classe jeu
+    */
     public Jeu() {
         this.random = new Random(1337);
         this.maxEnnemis = 2;
     }
+    /**
+     * fonction permettant de générer les enemies au debut de chaque combat
+     * On crée une nouvelle liste d'enemie
+     * On la remplit d'un nombre aléatoire d'enemie inférieur ou égale au nombre d'enemie totale que l'on veut
+     * On le reste la liste avec notre deuxième enemie
+     */
 
     private void genererEnnemis() {
         this.ennemis = new ArrayList<Ennemi>();
@@ -29,6 +45,12 @@ public class Jeu {
             for (int i = 0; i < nombreSquelette; ++i) this.ennemis.add(new Squelette());
         }
     }
+    /**
+     * Fonction permettant d'initialiser une partie
+     * Si le joueur décide de commencer une partie, on lui demande d'écrire son nom et on génère la 1ere vague d'enemie
+     * Génération du joueur 
+     * @return vraie si la partie peut commencer ou false si l'utilisateur demande a quitter le jeu
+     */
 
     public boolean initialiseJeu() {
         InterfaceUtilisateur.menuPrincipal();
@@ -44,6 +66,11 @@ public class Jeu {
         }
     }
 
+    /**
+     * fonction permettant l'execution des actions des enemies lors de combats
+     * execution de l'attaque
+     * affichage de l'attaque
+     */
     private void phaseEnnemie() {
         for (Ennemi ennemi : this.ennemis) {
             if (ennemi.getPv() > 0) {
@@ -53,7 +80,14 @@ public class Jeu {
         }
         this.joueur.setSeDefend(false);
     }
-
+    /**
+     * fonction permettant l'execution de la boucle de combat
+     * La boucle continue tant que le joueur a des Pv et qu'il y a toujours des enemies
+     * affichage de l'etat du combat
+     * choix de l'utilisateur
+     * execution du choix
+     * execution phase enemie
+     */
     private void phaseCombat() {
         while (this.joueur.getPv() > 0 && !ennemis.isEmpty()) {
             System.out.flush();
@@ -99,7 +133,10 @@ public class Jeu {
             }
         }
     }
-
+    /**
+     * Fonction permettant de faire son choix lors de la phase d'équipement
+     * En fonction du choix, on appelle différentes fonction comme acheter objet, vendre objet
+     */
     private void phaseBoutique() {
         this.boutique = new Boutique();
         InterfaceUtilisateur.afficherBoutique(this.boutique);
@@ -128,7 +165,11 @@ public class Jeu {
             }
         }
     }
-
+/** Fonction contenant la boucle de jeu
+ * Elle va apeller les fonction phaseCombat, PhaseBoutique et genererEnemie en boucle
+ * C'est cette fonction qui va permettre de jouer autant que l'utilisateur le peux
+ * A la sortie de la boucle, on affiche la fin du jeu
+ */
     public void boucleDeJeu() {
         while (this.joueur.getPv() > 0) {
             phaseCombat();
