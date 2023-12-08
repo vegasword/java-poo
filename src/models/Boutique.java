@@ -58,7 +58,9 @@ public class Boutique {
         if (joueur.getOr() >= prixAchat) {
             joueur.setOr(joueur.getOr() - prixAchat);
             if (this.objetDisponible instanceof Arme) {
-                joueur.setArme((Arme)this.objetDisponible);
+                joueur.setArme((Arme) this.objetDisponible);
+            } else if (this.objetDisponible instanceof  Armure) {
+                joueur.setArmure((Armure) this.objetDisponible);
             } else {
                 joueur.getInventaire().add(this.objetDisponible);
             }
@@ -79,7 +81,5 @@ public class Boutique {
         joueur.setOr(joueur.getOr() + prixVente);
         System.out.println("Vous avez vendu " + objet.getNom() + " pour " + prixVente + " pièces d'or.");
     }
-
-
 }
 
