@@ -1,6 +1,6 @@
 package models;
 
-public abstract class Objet {
+public abstract class Objet implements Interactif {
     private String nom;
     private int prixAchat;
     private int prixVente;
@@ -25,22 +25,7 @@ public abstract class Objet {
         return this.prixVente;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrixAchat(int prixAchat) {
-        this.prixAchat = prixAchat;
-    }
-
-    public void setPrixVente(int prixVente) {
-        this.prixVente = prixVente;
-    }
-
-    public void interraction()
-    {
-        System.out.print("un objet interragit avec le joueur");
-    }
+    public void interagitAvecUnPersonnage(Personnage personnage) { }
 }
 
 

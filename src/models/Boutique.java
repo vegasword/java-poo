@@ -1,36 +1,61 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Boutique {
-    private final List<Objet> objetsDisponibles;
+    private Objet objetDisponible;
 
     public Boutique() {
-        objetsDisponibles = new ArrayList<>();
-        initialiserBoutique();
-        System.out.println("Boutique Crée !");
+        Random random = new Random();
+        int itemRandomId = random.nextInt(0, 2);
+        switch (itemRandomId) {
+            case 0: {
+                int armeRandomId = random.nextInt(0, 3);
+                switch (armeRandomId) {
+                    case 0: this.objetDisponible = new EpeeCourte(); break;
+                    case 1: this.objetDisponible = new EpeeLongue(); break;
+                    case 2: this.objetDisponible = new Claymore(); break;
+                }
+            }
+            break;
 
+            case 1: {
+                int armureRandomId = random.nextInt(0, 3);
+                switch (armureRandomId) {
+                    case 0: this.objetDisponible = new ArmureEnCarton(); break;
+                    case 1: this.objetDisponible = new ArmureEnPierre(); break;
+                    case 2: this.objetDisponible = new ArmureLourde(); break;
+                }
+            }
+            break;
+
+            case 2: {
+                int potionRandomId = random.nextInt(0, 2);
+                switch (potionRandomId) {
+                    case 0: this.objetDisponible = new PetitePotionSoin(); break;
+                    case 1: this.objetDisponible = new GrossePotionSoin(); break;
+                }
+            }
+            break;
+        }
     }
 
-    private void initialiserBoutique() {
-        Arme sword1 = new Arme("Épée en bois", 5, 2, 5, 10);
-        Arme lance = new Arme("Lance en bois", 5, 2, 10, 5);
-        objetsDisponibles.add(sword1);
-        objetsDisponibles.add(lance);
-    }
-    public List<Objet> getObjetsDisponibles() {
-        return objetsDisponibles;
+    public Objet getObjetDisponible() {
+        return this.objetDisponible;
     }
 
-    public void acheterObjet(Joueur joueur, Objet objet) {
-        int prixAchat = objet.getPrixAchat();
-
+    public void acheterObjet(Joueur joueur) {
+        int prixAchat = this.objetDisponible.getPrixAchat();
         if (joueur.getOr() >= prixAchat) {
             joueur.setOr(joueur.getOr() - prixAchat);
-            System.out.println("Achat réussi : " + objet.getnom() + " pour " + prixAchat + " ecus.");
+            if (this.objetDisponible instanceof Arme) {
+                joueur.setArme((Arme)this.objetDisponible);
+            } else {
+                joueur.getInventaire().add(this.objetDisponible);
+            }
+            this.objetDisponible.interagitAvecUnPersonnage(joueur);
         } else {
-            System.out.println("Pas assez d'ecus. Impossible d'acheter " + objet.getnom() + ".");
+            System.out.println("Pas assez de pièces d'or ! Impossible d'acheter " + objetDisponible.getNom() + ".");
         }
     }
 
@@ -38,7 +63,7 @@ public class Boutique {
         int prixVente = objet.getPrixVente();
 
         joueur.setOr(joueur.getOr() + prixVente);
-        System.out.println("Vente réussie : " + objet.getnom() + " pour " + prixVente + " ecus.");
+        System.out.println("Vous avez vendu " + objet.getNom() + " pour " + prixVente + " pièces d'or.");
     }
 
 
