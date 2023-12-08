@@ -14,6 +14,12 @@ public abstract class Personnage implements Interactif {
     private Armure armure;
     private ArrayList<Objet> inventaire = new ArrayList();
 
+    /**
+     * Constructeur de la base de personnage
+     * @param pv Nombre de points de vie du personnage
+     * @param nom Nom du personnage
+     * @param force Points de force du personnage
+     */
     public Personnage(int pv, String nom, int force) {
         this.force = force;
         this.maxPV = pv;
@@ -24,6 +30,8 @@ public abstract class Personnage implements Interactif {
         this.arme = null;
         this.armure = null;
     }
+
+    // Getters
 
     public int getPv() {
         return this.pv;
@@ -59,6 +67,8 @@ public abstract class Personnage implements Interactif {
         return this.inventaire;
     }
 
+    // Setters
+
     public void setPv(int pv) {
         this.pv = pv;
     }
@@ -79,10 +89,18 @@ public abstract class Personnage implements Interactif {
         this.armure = armure;
     }
 
+    /**
+     *  Le personnage attaque une cible
+     *  @param cible Personnage ciblé par l'attaque
+     *  @return Retourne les dégâts infligé
+     */
     public abstract int attaque(Personnage cible);
+
+    /**
+     * Le personnage se défend et réduit les dégâts qu'il subit
+     */
     public abstract void defense();
 
-    public void interagitAvecUnPersonnage(Personnage personnage) {
-    }
+    public void interagitAvecUnPersonnage(Personnage personnage) { }
 }
 
