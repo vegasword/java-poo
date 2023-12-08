@@ -8,11 +8,16 @@ public class EntreeUtilisateur {
     private static Scanner scanner = new Scanner(System.in);
 
     private static int faireUnChoix(int min, int max) {
-        int choix;
+        int choix = 0;
         do {
-            choix = scanner.nextInt();
-            if (choix < min || choix > max) {
-                System.out.println("Entrez une valeur valide !");
+            try {
+                choix = scanner.nextInt();
+                if (choix < min || choix > max) {
+                    System.out.println("Entrez une valeur valide !");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Java est tellement cool que si tu met du texte à la place d'un chiffre, ça fait crash ! Aurevoir et à très bientôt pour de nouvelles aventures !");
+                System.exit(0);
             }
         } while (choix < min || choix > max);
         return choix;
@@ -22,17 +27,11 @@ public class EntreeUtilisateur {
        String chaine = new String();
        boolean chaineValide = false;
        do {
-           try {
-               chaine = scanner.next();
-               if (chaine.length() > tailleMax) {
-                System.out.println("Votre chaîne de caractères doit être inférieure à " + tailleMax);
-               } else {
-                   chaineValide = true;
-               }
-           } catch (NoSuchElementException e) {
-               System.out.println("Entrez une chaîne de caractères non vide !\n" + e.getMessage());
-           } catch (IllegalStateException e) {
-               System.out.println("Impossible de récupérer la chaîne de caractères spécifiée !\n" + e.getMessage());
+           chaine = scanner.next();
+           if (chaine.length() > tailleMax) {
+            System.out.println("Votre chaîne de caractères doit être inférieure à " + tailleMax);
+           } else {
+               chaineValide = true;
            }
        } while (!chaineValide);
        return chaine;

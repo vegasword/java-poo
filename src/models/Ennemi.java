@@ -11,8 +11,13 @@ public class Ennemi extends Personnage {
         if (this.getArme() != null) {
             degat += this.getArme().getDegat();
         }
-        if (cible.getSeDefend()) degat /= 2;
+        if (cible.getSeDefend()) {
+            degat /= 2;
+        }
         cible.setPv(cible.getPv() - degat);
+        if (cible.getPv() < 0) {
+            cible.setEstEnVie(false);
+        }
         return degat;
     }
 

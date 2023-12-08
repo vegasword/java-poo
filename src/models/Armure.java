@@ -28,10 +28,12 @@ public class Armure extends Objet {
     }
 
     public void interagitAvecUnPersonnage(Personnage personnage) {
-        personnage.getInventaire().add(this);
-        System.out.print(personnage.getNom() + " s'équipe de l'armure suivante: " + this.getNom());
-    }
-
-    public void interagitAvecUnObjet(Objet objet) {
+        Armure armureDuPersonnage = personnage.getArmure();
+        if (armureDuPersonnage != null) {
+            System.out.println(personnage.getNom() + " remplace " + armureDuPersonnage + " par " + this.getNom());
+        } else {
+            System.out.println(personnage.getNom() + " s'équipe de l'armure suivante: " + this.getNom());
+        }
+        personnage.setArmure(this);
     }
 }

@@ -8,6 +8,7 @@ public abstract class Personnage implements Interactif {
     private String nom;
     private int force;
     private boolean seDefend;
+    private boolean estEnVie;
 
     private Arme arme;
     private Armure armure;
@@ -19,6 +20,7 @@ public abstract class Personnage implements Interactif {
         this.pv = pv;
         this.nom = nom;
         this.seDefend = false;
+        this.estEnVie = true;
         this.arme = null;
         this.armure = null;
     }
@@ -41,8 +43,16 @@ public abstract class Personnage implements Interactif {
         return this.seDefend;
     }
 
+    public boolean getEstEnVie() {
+        return this.estEnVie;
+    }
+
     public Arme getArme() {
-        return arme;
+        return this.arme;
+    }
+
+    public Armure getArmure() {
+        return this.armure;
     }
 
     public ArrayList<Objet> getInventaire() {
@@ -53,22 +63,20 @@ public abstract class Personnage implements Interactif {
         this.pv = pv;
     }
 
-    public void setMaxPV(int maxPV) { this.maxPV = maxPV; }
-
-    public void setForce(int force) {
-        this.force = force;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public void setSeDefend(boolean seDefend) {
         this.seDefend = seDefend;
     }
 
+    public void setEstEnVie(boolean estEnVie) {
+        this.estEnVie = estEnVie;
+    }
+
     public void setArme(Arme arme) {
         this.arme = arme;
+    }
+
+    public void setArmure(Armure armure) {
+        this.armure = armure;
     }
 
     public abstract int attaque(Personnage cible);

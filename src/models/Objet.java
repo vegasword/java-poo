@@ -25,20 +25,7 @@ public abstract class Objet implements Interactif {
         return this.prixVente;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrixAchat(int prixAchat) {
-        this.prixAchat = prixAchat;
-    }
-
-    public void setPrixVente(int prixVente) {
-        this.prixVente = prixVente;
-    }
-
     public void interagitAvecUnPersonnage(Personnage personnage) { }
-    public void interagitAvecUnObjet(Objet objet) { }
 }
 
 

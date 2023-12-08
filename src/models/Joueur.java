@@ -24,13 +24,21 @@ public class Joueur extends Personnage {
     @Override
     public int attaque(Personnage cible) {
         int degat = this.getForce();
-        if (this.getArme() != null) {
-            degat += this.getArme().getDegat();
+        Arme armeDuJoueur = this.getArme();
+        if (armeDuJoueur != null) {
+            degat += armeDuJoueur.getDegat();
+            int durabiliteArmeDuJoueur = armeDuJoueur.getDurabilite();;
+            armeDuJoueur.setDurabilite(durabiliteArmeDuJoueur - 1);
+            if (durabiliteArmeDuJoueur <= 0) {
+                System.out.println(this.getNom() + " a cassé son arme " + this.getArme().getNom());
+                this.setArme(null);
+            }
         }
         if (cible.getSeDefend()) degat /= 4;
         cible.setPv(cible.getPv() - degat);
         int cibleNewPv = cible.getPv();
         if (cibleNewPv < 0) {
+            cible.setEstEnVie(false);
             this.or += Math.abs(cibleNewPv);
             victimes++;
         }

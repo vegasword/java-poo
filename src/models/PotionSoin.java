@@ -3,8 +3,8 @@ package models;
 public class PotionSoin extends Objet {
     private int bonusSante;
 
-    public PotionSoin(int bonusSante){
-        super("Potion", 20, 10);
+    public PotionSoin(String nom, int prixAchat, int prixVente, int bonusSante){
+        super(nom, prixAchat, prixVente);
         this.bonusSante = bonusSante;
     }
 
@@ -27,6 +27,7 @@ public class PotionSoin extends Objet {
     }
 
     public void interagitAvecUnPersonnage(Personnage personnage) {
+        System.out.println(personnage.getNom() + " se soigne de " + this.bonusSante + " PV !");
         this.soin(personnage);
     }
 }

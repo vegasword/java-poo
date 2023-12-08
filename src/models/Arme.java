@@ -27,10 +27,12 @@ public class Arme extends Objet {
     }
 
     public void interagitAvecUnPersonnage(Personnage personnage) {
+        Arme armeDuPersonnage = personnage.getArme();
+        if (armeDuPersonnage != null) {
+            System.out.println(personnage.getNom() + " remplace " + armeDuPersonnage + " par " + this.getNom());
+        } else {
+            System.out.println(personnage.getNom() + " s'équipe de l'arme suivante: " + this.getNom());
+        }
         personnage.setArme(this);
-        System.out.print(personnage.getNom() + " s'équipe de l'arme suivante: " + this.getNom());
-    }
-
-    public void interagitAvecUnObjet(Objet objet) {
     }
 }
