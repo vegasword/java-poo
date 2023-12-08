@@ -15,9 +15,9 @@ public class Jeu {
     private int maxEnnemis;
     private Random random;
 
-    public Jeu(int maxEnnemis) {
+    public Jeu() {
         this.random = new Random(1337);
-        this.maxEnnemis = maxEnnemis;
+        this.maxEnnemis = 2;
     }
 
     private void genererEnnemis() {
