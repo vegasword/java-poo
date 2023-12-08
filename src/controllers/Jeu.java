@@ -39,7 +39,9 @@ public class Jeu {
     private void genererEnnemis() {
         this.ennemis = new ArrayList<Ennemi>();
         int nombreZombie = this.random.nextInt(1, this.maxEnnemis);
-        for (int i = 0; i < nombreZombie; ++i) this.ennemis.add(new Zombie());
+        for (int i = 0; i < nombreZombie; ++i) {
+            this.ennemis.add(new Zombie());
+        }
         if (maxEnnemis - nombreZombie > 0) {
             int nombreSquelette = this.random.nextInt(1, this.maxEnnemis);
             for (int i = 0; i < nombreSquelette; ++i) this.ennemis.add(new Squelette());

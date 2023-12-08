@@ -9,18 +9,27 @@ public class Joueur extends Personnage {
         this.or = or;
     }
 
+    // Getters
+
     public int getOr() {
         return or;
-    }
-
-    public void setOr(int or) {
-        this.or = or;
     }
 
     public int getScore() {
         return this.victimes * this.or;
     }
 
+    // Setters
+
+    public void setOr(int or) {
+        this.or = or;
+    }
+
+    /**
+     * Attaque du joueur sur un personnage
+     * @param cible Personnage ciblé par l'attaque
+     * @return
+     */
     @Override
     public int attaque(Personnage cible) {
         int degat = this.getForce();
@@ -45,11 +54,18 @@ public class Joueur extends Personnage {
         return degat;
     }
 
+    /**
+     * Le joueur se défend de la prochaine attaque subit
+     */
     @Override
     public void defense() {
         this.setSeDefend(true);
     }
 
+    /**
+     * Implémentation de l'interaction entre un joueur et un personnage
+     * @param p Personnage concerné
+     */
     public void interagitAvecUnPersonnage(Personnage p) {
         if (p instanceof Ennemi) {
             System.out.println(this.getNom() + " lâche son meilleur regard noir sur " + p.getNom());

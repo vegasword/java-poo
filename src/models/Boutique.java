@@ -5,6 +5,9 @@ import java.util.*;
 public class Boutique {
     private Objet objetDisponible;
 
+    /**
+     * Constructeur de la boutique qui chosit aléatoirement un objet afin qu'il soit mis en vente
+     */
     public Boutique() {
         Random random = new Random();
         int itemRandomId = random.nextInt(0, 2);
@@ -40,10 +43,16 @@ public class Boutique {
         }
     }
 
+    // Getters
+
     public Objet getObjetDisponible() {
         return this.objetDisponible;
     }
 
+    /**
+     * Le joueur spécifié achète l'objet en vente
+     * @param joueur Joueur concerné
+     */
     public void acheterObjet(Joueur joueur) {
         int prixAchat = this.objetDisponible.getPrixAchat();
         if (joueur.getOr() >= prixAchat) {
@@ -59,6 +68,11 @@ public class Boutique {
         }
     }
 
+    /**
+     * Le joueur spécifié vend un de ses objets spécifié
+     * @param joueur Joueur concerné
+     * @param objet Objet appartenant à l'inventaire du joueur
+     */
     public void vendreObjet(Joueur joueur, Objet objet) {
         int prixVente = objet.getPrixVente();
 
