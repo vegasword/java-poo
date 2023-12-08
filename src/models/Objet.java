@@ -31,6 +31,7 @@ public abstract class Objet implements Interactif {
         return this.prixVente;
     }
 
+
     public void interagitAvecUnPersonnage(Personnage personnage) { }
 }
 
